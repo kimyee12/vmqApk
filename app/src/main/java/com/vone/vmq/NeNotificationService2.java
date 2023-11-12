@@ -395,7 +395,16 @@ public class NeNotificationService2 extends NotificationListenerService {
         context.sendBroadcast(intent1);
     }
 
+	public static String removeLastDot(String str) {  
+		if (str.length() > 0 && str.charAt(str.length() - 1) == '.') {  
+			return str.substring(0, str.length() - 1);  
+		} else {  
+			return str;  
+		}  
+	}
+
     public static String getMoney(String content) {
+		content = removeLastDot(content);
         List<String> ss = new ArrayList<>();
         for (String sss : content.replaceAll(",", "")
                 .replaceAll("[^0-9.]", ",").split(",")) {
